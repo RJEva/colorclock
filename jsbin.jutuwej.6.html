@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2021 by RJEva (http://jsbin.com/jutuwej/6/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="színóra">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>ColorClock</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+<style id="jsbin-css">
+html, body {
+  height: 100%;
+  font-family: 'Numans', sans-serif;
+  color: rgba(100,100,100,.9);
+}
+
+#time {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  font-size: 3rem;
+  margin-top: -8.5rem;
+}
+
+#date,
+#clock{
+  padding: 1rem;
+}
+</style>
+</head>
+<body>
+  <div id="time">
+    <div id="date">yyyy.mm.dd</div>
+    <div id="clock">12:13:14</div>
+  </div>
+<script id="jsbin-javascript">
+function colorClock(){
+  var date = new Date();
+
+  var year = date.getFullYear();
+  var month = date.getMonth() +1;
+  var day = date.getDate();
+  
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+
+  if (month < 10) {
+    month = '0' + month;
+  }
+  if (day < 10) {
+    day = '0' + day;
+  }
+    
+  if (hours < 10) {
+    hours = '0' + hours;
+  }
+  if (minutes < 10) {
+    minutes = '0' + minutes;
+  }
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+
+  var dateFace = year + '.' + month + '.' + day + '.';
+  var clockFace = hours + ':' + minutes + ':' + seconds;
+  var hexColor = '#' + '20' + month + seconds;
+
+  document.getElementById('date').innerHTML = dateFace;
+  document.getElementById('clock').innerHTML = clockFace;
+  document.body.style.background = hexColor;
+
+  setTimeout(function() {
+    colorClock();
+  }, 1000);
+}
+colorClock();
+</script>
+</body>
+</html>
